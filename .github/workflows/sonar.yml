@@ -26,7 +26,7 @@ jobs:
              sudo echo "export JAVA_HOME=/usr/lib/jvm/temurin-24-jdk-amd64" > ${{ github.workspace }}/jdk24.sh
              sudo echo "export PATH=$JAVA_HOME/bin:$PATH" >> ${{ github.workspace }}/jdk24.sh
              sudo chmod a+x ${{ github.workspace }}/jdk24.sh
-             sudo source ${{ github.workspace }}/jdk24.sh
+             sudo /bin/bash ${{ github.workspace }}/jdk24.sh
       - name: Install xorg
         run: sudo apt-get install -y xorg openbox
       - name: Install Xvfb
