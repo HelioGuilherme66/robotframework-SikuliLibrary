@@ -23,8 +23,8 @@ jobs:
              curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo gpg --dearmor -o /etc/apt/keyrings/adoptium.gpg
              echo "deb [signed-by=/etc/apt/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
              sudo apt update && sudo apt install -y temurin-24-jdk
-             sudo echo "export JAVA_HOME=/usr/lib/jvm/temurin-24-jdk-amd64" > $HOME/jdk24.sh
-             sudo echo "export PATH=$JAVA_HOME/bin:$PATH" >> $HOME/jdk24.sh
+             sudo echo export JAVA_HOME=/usr/lib/jvm/temurin-24-jdk-amd64 > $HOME/jdk24.sh
+             sudo echo export PATH=\$JAVA_HOME/bin:\$PATH >> $HOME/jdk24.sh
              sudo chmod a+x $HOME/jdk24.sh
              /bin/bash $HOME/jdk24.sh
       - name: Install xorg
@@ -46,6 +46,7 @@ jobs:
       - name: Test Install SikuliLibrary
         run: |
              /bin/bash $HOME/jdk24.sh
+             echo DEBUG: JAVA_HOME=$JAVA_HOME
              ./build.sh
              pip install robotframework
              pip install dist/robotframework_sikulilibrary-*.whl 
