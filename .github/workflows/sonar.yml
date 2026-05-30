@@ -16,6 +16,17 @@ jobs:
         run: sudo apt update -y
       - name: Install missing library
         run: sudo apt-get install libnotify4 libsdl1.2debian libsdl2.2 wxpython-tools -y
+      - name: Install JDK
+        run: |
+             sudo apt install -y ca-certificates curl gnupg
+             sudo mkdir -p /etc/apt/keyrings
+             curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo gpg --dearmor -o /etc/apt/keyrings/adoptium.gpg
+             echo "deb [signed-by=/etc/apt/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+             sudo apt update && sudo apt install -y temurin-24-jdk
+             sudo echo "export JAVA_HOME=/usr/lib/jvm/temurin-24-jdk-amd64" > /etc/profile.d/jdk24.sh
+             sudo echo "export PATH=$JAVA_HOME/bin:$PATH" >> /etc/profile.d/jdk24.sh
+             sudo chmod a+x /etc/profile.d/jdk24.sh
+             sudo source /etc/profile.d/jdk24.sh
       - name: Install xorg
         run: sudo apt-get install -y xorg openbox
       - name: Install Xvfb
