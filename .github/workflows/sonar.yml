@@ -26,7 +26,7 @@ jobs:
              sudo echo export JAVA_HOME=/usr/lib/jvm/temurin-24-jdk-amd64 > $HOME/jdk24.sh
              sudo echo export PATH=\$JAVA_HOME/bin:\$PATH >> $HOME/jdk24.sh
              sudo chmod a+x $HOME/jdk24.sh
-             /bin/bash $HOME/jdk24.sh
+             sudo /bin/bash $HOME/jdk24.sh
       - name: Install xorg
         run: sudo apt-get install -y xorg openbox
       - name: Install Xvfb
@@ -36,20 +36,20 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Install invoke and any other packages
-        run: pip install coverage invoke pytest
+        run: sudo pip install coverage invoke pytest
       - name: Install SikuliLibrary dependencies
         run: |
-             python -m pip install -U pip
-             pip install robotframework
+             sudo python -m pip install -U pip
+             sudo pip install robotframework
       - name: Run Xvfb
         run: Xvfb :1 -noreset &
       - name: Test Install SikuliLibrary
         run: |
-             /bin/bash $HOME/jdk24.sh
+             sudo /bin/bash $HOME/jdk24.sh
              echo DEBUG: JAVA_HOME=$JAVA_HOME
-             pip install robotframework
-             ./build.sh
-             pip install dist/robotframework_sikulilibrary-*.whl 
+             sudo pip install robotframework
+             sudo ./build.sh
+             sudo pip install dist/robotframework_sikulilibrary-*.whl 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarqube-scan-action@v8.0.0
         with:
