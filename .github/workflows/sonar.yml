@@ -39,7 +39,6 @@ jobs:
         run: sudo pip install coverage invoke pytest
       - name: Install SikuliLibrary dependencies
         run: |
-             sudo python -m pip install -U pip
              sudo pip install robotframework
       - name: Run Xvfb
         run: Xvfb :1 -noreset &
