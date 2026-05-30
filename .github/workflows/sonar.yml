@@ -47,8 +47,8 @@ jobs:
         run: |
              /bin/bash $HOME/jdk24.sh
              echo DEBUG: JAVA_HOME=$JAVA_HOME
-             ./build.sh
              pip install robotframework
+             ./build.sh
              pip install dist/robotframework_sikulilibrary-*.whl 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarqube-scan-action@v8.0.0
