@@ -5,7 +5,7 @@
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.24.0.8-2.fc41.x86_64
 if [[ "$USERNAME" == "helio" ]];  # Running locally instead of GitActions
 then
-    export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-latest-openjdk
 fi
 # export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
 export DISABLE_SIKULI_LOG=1

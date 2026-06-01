@@ -43,6 +43,7 @@ jobs:
       - name: Run Xvfb
         run: Xvfb :1 -noreset &
       - name: Test Install SikuliLibrary
+        timeout-minutes: 20 
         run: |
              sudo /bin/bash $HOME/jdk24.sh
              echo DEBUG: JAVA_HOME=$JAVA_HOME
