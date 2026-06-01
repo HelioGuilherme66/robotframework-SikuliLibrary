@@ -52,7 +52,13 @@ jobs:
              echo DEBUG: JAVA_HOME=$JAVA_HOME
              sudo pip install robotframework
              sudo ./build.sh
-             sudo pip install dist/robotframework_sikulilibrary-*.whl 
+             sudo pip install dist/robotframework_sikulilibrary-*.whl
+      - uses: actions/upload-artifact@v7
+        with:
+          name: artifacts
+          path: |
+            dist/
+            target/SikuliLibrary.jar
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarqube-scan-action@v8.0.0
         with:
