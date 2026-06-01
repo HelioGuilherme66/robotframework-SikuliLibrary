@@ -34,7 +34,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Install invoke and any other packages
-        run: sudo pip install coverage invoke pytest
+        run: sudo pip install coverage invoke pytest build
       - name: Install SikuliLibrary dependencies
         run: |
              sudo pip install robotframework
