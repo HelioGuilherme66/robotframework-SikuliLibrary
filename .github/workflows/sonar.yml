@@ -14,8 +14,8 @@ jobs:
           fetch-depth: 0
       - name: Update ubuntu
         run: sudo apt update -y
-      - name: Install missing library
-        run: sudo apt-get install libnotify4 libsdl1.2debian libsdl2.2 wxpython-tools -y
+      - name: Install missing libraries
+        run: sudo apt-get install xvfb libopencv-dev tesseract-ocr libxtst6 libxi6 libnotify4 libsdl1.2debian libsdl2.2 wxpython-tools -y
       - name: Install JDK
         run: |
              sudo apt install -y ca-certificates curl gnupg
@@ -29,8 +29,6 @@ jobs:
              sudo /bin/bash $HOME/jdk24.sh
       - name: Install xorg
         run: sudo apt-get install -y xorg openbox
-      - name: Install Xvfb
-        run: sudo apt-get install xvfb -y
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
@@ -41,8 +39,13 @@ jobs:
         run: |
              sudo pip install robotframework
       - name: Run Xvfb
-        run: Xvfb :1 -noreset &
+        run: |
+             Xvfb :99 -screen 0 1920x1080x24 -noreset &
+             sleep 2  # give Xvfb time to initialize
+             echo "DISPLAY=:99" >> $GITHUB_ENV
       - name: Test Install SikuliLibrary
+        env:
+          DISPLAY: :99
         timeout-minutes: 20 
         run: |
              sudo /bin/bash $HOME/jdk24.sh
