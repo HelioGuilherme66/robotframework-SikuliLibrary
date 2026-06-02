@@ -68,6 +68,17 @@
             <artifactId>jrobotremoteserver</artifactId>
             <version>4.1.1</version>
         </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/net.sourceforge.lept4j/lept4j -->
+        <dependency>
+            <groupId>net.sourceforge.lept4j</groupId>
+            <artifactId>lept4j</artifactId>
+            <version>1.24.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.julienmerconsulting.apertix</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.10.0-0</version>
+        </dependency>
 
 
     </dependencies>
