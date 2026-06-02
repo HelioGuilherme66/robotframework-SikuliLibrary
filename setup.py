@@ -13,7 +13,7 @@ with open(join(dirname(abspath(__file__)), 'target', 'src', 'SikuliLibrary', 've
 with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
 
-DESCRIPTION = "Sikuli Robot Framework Library provide keywords for Robot Framework to test UI through Sikuli."
+DESCRIPTION = "Sikuli Robot Framework Library provide keywords for Robot Framework to test UI through Sikuli/Oculix."
 
 setup_kwargs = {
     "name": "robotframework-SikuliLibrary",
@@ -27,7 +27,7 @@ setup_kwargs = {
     "maintainer_email": "helioxentric@gmail.com",
     "url": "https://github.com/MarketSquare/robotframework-SikuliLibrary",
     "license": "Apache-2.0",
-    "keywords": "robotframework testing testautomation sikuli UI",
+    "keywords": "robotframework testing testautomation sikuli oculix UI",
     "platforms": "any",
     "package_dir": {"" : "target/src"},
     "packages": ["SikuliLibrary"],
